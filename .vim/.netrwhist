@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/petr/windows'
+let g:netrw_dirhist_2='/home/petr/windows/Documents'
+let g:netrw_dirhist_3='/home/petr/windows'
+let g:netrw_dirhist_4='/home/petr'
+let g:netrw_dirhist_5='/home'
+let g:netrw_dirhist_6='/'
+let g:netrw_dirhist_7='/home/petr'
+let g:netrw_dirhist_8='/home/petr/.filezilla'
+let g:netrw_dirhist_9='/home/petr/Documents/MFF/5. semestr/C#/BRS#/Utils'

@@ -1,0 +1,9 @@
+[push]
+	default = simple
+[user]
+	name = Petr Stefan
+	email = ptr.stef@gmail.com
+[merge]
+	tool = meld
+[core]
+	editor = vim
