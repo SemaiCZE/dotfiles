@@ -16,14 +16,22 @@ mkdir -p ${BACKUPDIR}
 #move existing dotfiles do backup dir and symlink that from dotfiles dir
 for FILE in ${FILES}; do
 	echo "Backing up ${FILE}"
-	mv ${HOME}/${FILE} ${BACKUPDIR}
+	if test -h ${HOME}/${FILE}; then
+		mv `readlink ${HOME}/${FILE}` ${BACKUPDIR}
+	else
+		mv ${HOME}/${FILE} ${BACKUPDIR}
+	fi
 	echo "Creating symlink"
 	ln -s ${CONFDIR}/${FILE} ${HOME}/${FILE}
 done
 
 # handle .ssh_config
 echo "Backing up .ssh_config"
-mv ${HOME}/.ssh/config ${BACKUPDIR}
+if test -h ${HOME}/.ssh/config; then
+	mv `readlink ${HOME}/.ssh/config` ${BACKUPDIR}
+else
+	mv ${HOME}/.ssh/config ${BACKUPDIR}
+fi
 echo "Creating symlink"
 ln -s ${CONFDIR}/.ssh_config ${HOME}/.ssh/config
 
