@@ -7,3 +7,5 @@
 	tool = meld
 [core]
 	editor = vim
+[diff]
+	submodule = log
