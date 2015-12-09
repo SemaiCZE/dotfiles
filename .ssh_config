@@ -1,0 +1,45 @@
+Host mff
+    HostName u-pl3.ms.mff.cuni.cz
+    User stefanp1
+
+Host sansa
+    HostName sansa.ps.stdin.cz
+    #HostName 93.153.65.124
+    Port 235
+    User petr
+    Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes128-ctr
+    MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160
+    KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1
+
+Host geekon
+    HostName 89.24.185.94
+    Port 235
+    User petr
+
+Host grafik
+    HostName grafik.ms.mff.cuni.cz
+    User stefan
+    Port 42222
+
+Host merlin
+    HostName merlin.os.stdin.cz
+    User petr
+
+Host lancelot
+    HostName lancelot.os.stdin.cz
+    User petr
+
+Host osy
+	HostName uniform.ms.mff.cuni.cz
+	User stefan
+
+Host recodex
+	HostName recodex.projekty.ms.mff.cuni.cz
+	User stefan
+	Port 42222
+
+Host tomsk
+	HostName tomsk.ms.mff.cuni.cz
+	User stefan
+	Port 42222
+
