@@ -9,3 +9,10 @@
 	editor = vim
 [diff]
 	submodule = log
+	tool = meld
+	guitool = meld
+[mergetool "meld"]
+	cmd = meld
+	trustExitCode = false
+[color]
+	ui = auto

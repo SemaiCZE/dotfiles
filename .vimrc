@@ -6,11 +6,12 @@ set background=dark
 
 " Set tab width to 4 characters
 set tabstop=4
-set softtabstop=4
+"set softtabstop=4
 " width of intending << and >>
 set shiftwidth=4
 " Use spaces instead of \t character
 "set expandtab
+set noexpandtab
 set smarttab
 
 set autoindent

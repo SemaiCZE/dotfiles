@@ -44,6 +44,7 @@ zstyle ':vcs_info:git*' formats "%b%F{yellow}%m%u%c%f"
 zstyle ':vcs_info:git*' actionformats "%b%F{yellow}%m%u%c(%a)%f"
 #PROMPT="%(!.%F{red}.%F{green})%n%F{red}@%F{cyan}%m%f:%F{yellow}%2~%F{green}%(?..%F{red})%#%f "
 PROMPT="%(!.%F{red}.%F{green})%n%F{red}@%F{cyan}%m%f:%F{yellow}%(4~.<</%2~.%~)%F{green}%(?..%F{red})%#%f "
+#PROMPT="%(!.%F{red}.%F{green})%n%F{red}@%F{cyan}%m%f:%F{yellow}%40<\<\<<%~%F{green}%(?..%F{red})%#%f "
 RPROMPT='%F{cyan}${vcs_info_msg_0_}%f %* %F{green}%(?..%F{red})%?%f'
 #bindkey "\e[H" beginning-of-line
 #bindkey "\e[F" end-of-line
@@ -62,6 +63,7 @@ alias vi='vimx'
 alias vim='vimx'
 alias la='ls -al'
 alias ls='ls --color=auto'
+alias ..="cd .."
 
 export PATH=$PATH:/home/petr/bin
 
