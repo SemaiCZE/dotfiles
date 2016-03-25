@@ -1,12 +1,12 @@
 #!/bin/bash
 
 #install dependencies - for red hat distros
-sudo dnf install zsh meld
+sudo dnf install zsh meld vim-command-t vim-nerdtree vim-javabrowser vim-X11 vim-omnicppcomplete
 
 CONFDIR="${HOME}/dotfiles"
 BACKUPDIR="${HOME}/dotfiles_backup"
 
-FILES=".bashrc .profile .vimrc .zshrc .gitconfig .vim"
+FILES=".bashrc .profile .vimrc .zshrc .gitconfig .vim .tmux.conf"
 #.ssh_config need special handling
 
 #prepare backup dir

@@ -16,9 +16,9 @@ Host geekon
     Port 235
     User petr
 
-Host grafik
-    HostName grafik.ms.mff.cuni.cz
-    User stefan
+Host parlab
+    HostName parlab.ms.mff.cuni.cz
+    User s_stefanp1
     Port 42222
 
 Host merlin
@@ -28,10 +28,6 @@ Host merlin
 Host lancelot
     HostName lancelot.os.stdin.cz
     User petr
-
-Host osy
-	HostName uniform.ms.mff.cuni.cz
-	User stefan
 
 Host recodex
 	HostName recodex.projekty.ms.mff.cuni.cz

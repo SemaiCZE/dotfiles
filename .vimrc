@@ -17,10 +17,12 @@ set smarttab
 set autoindent
 
 " Enable filetype plugins
-filetype plugin on
-filetype indent on
+filetype on                   " required!
+filetype plugin indent on 
 
 syntax on
+
+let mapleader = ","
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -57,9 +59,6 @@ inoremap <Up> <C-o>g<Up>
 
 set showmatch
 
-" \" is also :, - is / in noinsert mode (because of czech keyboard) - BAD FOR REGISTERS
-"set langmap=\":,-/
-
 " This shows what you are typing as a command
 set showcmd
 
@@ -85,12 +84,15 @@ set noswapfile
 set hlsearch
 " Incremental search when typing
 set incsearch
+" Use leader + l to clear the highlighting of :set hlsearch.
+map <silent> <leader>l :noh<CR>
 " Ignore case in search
 set ignorecase
 
 " Complete
 set omnifunc=syntaxcomplete#Complete
-set completeopt=longest,menuone
+"set completeopt=longest,menuone
+set completeopt=menu,menuone,longest
 
 " Wrap long lines in space instead of middle of the word
 set linebreak
@@ -121,7 +123,7 @@ set guioptions-=T
 "set ls=2
 
 " Run Pathogen - plugin manager
-"execute pathogen#infect()
+execute pathogen#infect()
 
 " Use F10 in insert mode to disable autointendation when inserting
 set pastetoggle=<F10>
@@ -129,16 +131,6 @@ set pastetoggle=<F10>
 " Set system clipboard as default for yanking and pasting
 set clipboard=unnamedplus
 
-"BEGIN_DEVASSISTANT_1
-"Setting value devassistant to 0 will use your existing .vimrc file
-"Setting value devassistant to 1 will use the vimrc defined by the devassistant feature
-
-let devassistant=0
-if devassistant==1
- :source /usr/share/devassistant/files/snippets/vim/vimrc
-endif
-"END_DEVASSISTANT_1
-"
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste
@@ -146,4 +138,61 @@ function! HasPaste()
     en
     return ''
 endfunction
+
+
+let g:SuperTabDefaultCompletionType = "context"
+" Have preview window for C++ as its complex prototypes
+"let g:clang_cpp_completeopt = 'longest,menuone,preview'
+let g:clang_cpp_completeopt = 'longest,menuone'
+let g:clang_cpp_options = '-std=c++14'
+let g:clang_diagsopt = ''
+
+" Height of the suggestions
+set pumheight=15
+
+"let g:NERDTreeWinPos = "right"
+"let Tlist_Auto_Open = 1
+let Tlist_Use_SingleClick = 1
+
+" map F2 to next buffer
+map <F2> :previous<CR>
+" map F3 to next buffer
+map <F3> :next<CR>
+
+augroup __java__
+au!
+au BufReadPre,BufNewFile *.java set fileencodings=utf-8 fileencoding=utf-8 encoding=utf-8
+"au BufRead,BufNewFile *.java set tw=0 foldmethod=indent cindent
+au BufRead,BufNewFile *.java set tw=0
+au BufRead,BufNewFile *.java set tabstop=4 expandtab
+"au BufRead,BufNewFile *.java set foldmethod=syntax foldclose=all foldnestmax=1
+au BufRead,BufNewFile *.java noremap <F9> :JavaBrowser<CR>
+au BufRead,BufNewFile *.java inoremap <F9> <Esc>:JavaBrowser<CR>
+au BufRead,BufNewFile *.java noremap <Tab> >>
+"au BufRead,BufNewFile *.java so ~/.vim/plugin/javabrowser.vim
+augroup END
+
+"autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-l> :wincmd l<CR>
+nmap <silent> <C-Left> :wincmd h<CR>
+nmap <silent> <C-Right> :wincmd l<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
+
+
+function! MyHelp()
+    echo "----------------------------------------------------------"
+    echo "^x^n- used for omni completition"
+    echo "^p - used for completition of current word (Previous) before cursor"
+    echo "^n - used for completition of current word (Next) after cursor"
+    echo "^x^f- Completion filename in current directory"
+    echo ", t - will call plugin vim-command-t for searching files recursivelly from current directory"
+    echo ":TlistAddFilesRecursive for adding files to tag list"
+    echo "----------------------------------------------------------"
+    echo "\n\n\n"
+endfunction
+
+map <F12> :call MyHelp()<CR>
 
