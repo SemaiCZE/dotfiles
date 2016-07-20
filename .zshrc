@@ -50,6 +50,7 @@ RPROMPT='%F{cyan}${vcs_info_msg_0_}%f %* %F{green}%(?..%F{red})%?%f'
 #bindkey "\e[F" end-of-line
 #bindkey "\e[3~" delete-char
 
+
 bindkey '\e[1~'   beginning-of-line  # Linux console
 bindkey '\e[H'    beginning-of-line  # xterm
 bindkey '\eOH'    beginning-of-line  # gnome-terminal
@@ -64,6 +65,10 @@ alias vim='vimx'
 alias la='ls -al'
 alias ls='ls --color=auto'
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias mc='mc --nosubshell'
 
 export PATH=$PATH:/home/petr/bin
 
@@ -75,7 +80,7 @@ LC_MEASUREMENT=cs_CZ.utf8
 LC_PAPER=cs_CZ.utf8
 
 source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source ~/Documents/source/zsh-autosuggestions/autosuggestions.zsh
+source ~/dotfiles/zsh-autosuggestions/zsh-autosuggestions.zsh
 #zle-line-init() {
 #    zle autosuggest-start
 #}

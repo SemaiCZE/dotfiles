@@ -5,14 +5,15 @@
 	email = ptr.stef@gmail.com
 [merge]
 	tool = meld
+	conflictstyle = diff3
+[mergetool "meld"]
+	cmd = meld --auto-merge --output $MERGED $LOCAL $BASE $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE
+	#cmd = meld --diff $BASE $LOCAL --diff $BASE $REMOTE --diff $LOCAL $BASE $REMOTE --output $MERGED
 [core]
 	editor = vim
 [diff]
 	submodule = log
 	tool = meld
 	guitool = meld
-[mergetool "meld"]
-	cmd = meld
-	trustExitCode = false
 [color]
 	ui = auto

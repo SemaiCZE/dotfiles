@@ -21,6 +21,11 @@ Host parlab
     User s_stefanp1
     Port 42222
 
+Host ubergrafik
+    HostName ubergrafik.ms.mff.cuni.cz
+    User s_stefanp1
+    Port 42222
+
 Host merlin
     HostName merlin.os.stdin.cz
     User petr

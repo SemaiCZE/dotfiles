@@ -18,7 +18,7 @@ set autoindent
 
 " Enable filetype plugins
 filetype on                   " required!
-filetype plugin indent on 
+filetype plugin indent on
 
 syntax on
 
@@ -38,13 +38,13 @@ set smartcase
 set virtualedit=onemore
 
 " display the current mode
-set showmode 
+set showmode
 
 " Dispaly 5 lines around cursor
 set scrolloff=5
 
 " Always show the status line
-"set laststatus=2
+set laststatus=2
 
 " Format the status line
 "set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
@@ -74,7 +74,7 @@ set backspace=2
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
 set confirm
- 
+
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
@@ -101,7 +101,7 @@ set linebreak
 set ruler
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw
+"set lazyredraw
 
 " For regular expressions turn magic on
 set magic
@@ -179,8 +179,15 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
-map <silent> <C-n> :NERDTreeToggle<CR>
+map <silent> <leader>x :NERDTreeToggle<CR>
 
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#buffer_min_count = 2
+set ttimeoutlen=50
 
 function! MyHelp()
     echo "----------------------------------------------------------"
