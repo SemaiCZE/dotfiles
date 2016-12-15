@@ -3,6 +3,7 @@ set nocompatible
 
 " Assume dark background
 set background=dark
+set t_Co=256
 
 " Set tab width to 4 characters
 set tabstop=4
@@ -15,6 +16,7 @@ set noexpandtab
 set smarttab
 
 set autoindent
+set smartindent
 
 " Enable filetype plugins
 filetype on                   " required!

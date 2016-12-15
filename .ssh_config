@@ -1,6 +1,9 @@
 Host mff
-    HostName u-pl3.ms.mff.cuni.cz
+    HostName u-pl16.ms.mff.cuni.cz
     User stefanp1
+    Compression yes
+    ForwardX11 yes
+    ForwardX11Trusted yes
 
 Host sansa
     HostName sansa.ps.stdin.cz
@@ -16,16 +19,6 @@ Host geekon
     Port 235
     User petr
 
-Host parlab
-    HostName parlab.ms.mff.cuni.cz
-    User s_stefanp1
-    Port 42222
-
-Host ubergrafik
-    HostName ubergrafik.ms.mff.cuni.cz
-    User s_stefanp1
-    Port 42222
-
 Host merlin
     HostName merlin.os.stdin.cz
     User petr
@@ -38,6 +31,10 @@ Host recodex
 	HostName recodex.projekty.ms.mff.cuni.cz
 	User stefan
 	Port 42222
+
+Host devcodex
+	User stefan
+	ProxyCommand ssh recodex nc -w 3 devcodex 42222
 
 Host tomsk
 	HostName tomsk.ms.mff.cuni.cz

@@ -68,9 +68,16 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias mc='mc --nosubshell'
+#alias mc='mc --nosubshell'
+
+if [[ $+MC_SID = 1 ]] ; then
+	# inside Midnight Commander? Just give us a basic prompt
+	#PROMPT=">%(#/#/) "
+	RPROMPT=""
+fi
 
 export PATH=$PATH:/home/petr/bin
+export TERM='gnome-256color'
 
 setopt autopushd
 
