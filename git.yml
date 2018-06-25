@@ -1,0 +1,5 @@
+- name: Set GIT environment
+  hosts: all
+  roles:
+      - git
+

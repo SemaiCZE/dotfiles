@@ -1,0 +1,5 @@
+- name: Set BASH environment
+  hosts: all
+  roles:
+      - bash
+

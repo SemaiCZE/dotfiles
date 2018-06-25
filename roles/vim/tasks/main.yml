@@ -1,0 +1,22 @@
+- name: Check if original .vimrc is present
+  stat: path=~/.vimrc
+  register: file
+
+- name: Backup original .vimrc
+  copy: src=~/.vimrc dest=.vimrc_backup
+  when: file.stat.exists
+
+- name: Copy new .vimrc
+  copy: src="{{ role_path }}/files/.vimrc" dest=~/.vimrc
+
+- name: Check if original .vim/ is present
+  stat: path=~/.vim
+  register: directory
+
+- name: Backup original .vim/
+  command: cp -r ~/.vim ~/.vim_backup
+  when: directory.stat.isdir is defined and directory.stat.isdir
+
+- name: Copy new .vim/
+  copy: src="{{ role_path }}/files/.vim" dest=~ directory_mode=yes
+

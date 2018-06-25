@@ -1,0 +1,27 @@
+[push]
+	default = simple
+[user]
+	name = Petr Stefan
+	email = ptr.stef@gmail.com
+	signingkey = B1D74F2C9C7433D3
+[merge]
+	tool = meld
+	conflictstyle = diff3
+[mergetool "meld"]
+	cmd = meld --auto-merge --output $MERGED $LOCAL $BASE $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE
+	#cmd = meld --diff $BASE $LOCAL --diff $BASE $REMOTE --diff $LOCAL $BASE $REMOTE --output $MERGED
+[core]
+	editor = vim
+[diff]
+	submodule = log
+	tool = meld
+	guitool = meld
+[color]
+	ui = auto
+[gpg]
+	program = gpg2
+[review "review.lineageos.org"]
+	username = Semai
+	email = ptr.stef@gmail.com
+[mergetool]
+	keepBackup = false

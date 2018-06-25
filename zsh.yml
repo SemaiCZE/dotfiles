@@ -1,0 +1,5 @@
+- name: Set ZSH environment
+  hosts: all
+  roles:
+      - zsh
+

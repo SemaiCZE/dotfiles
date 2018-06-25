@@ -1,0 +1,4 @@
+[all]
+#recodex-worker1.ms.mff.cuni.cz:42222 ansible_user=stefan
+recodex.mff.cuni.cz:42222 ansible_user=stefan
+

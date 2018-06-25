@@ -1,0 +1,11 @@
+- name: Check if original .tmux.conf is present
+  stat: path=~/.tmux.conf
+  register: file
+
+- name: Backup original .tmux.conf
+  copy: src=~/.tmux.conf dest=.tmux.conf_backup
+  when: file.stat.exists
+
+- name: Copy new .tmux.conf
+  copy: src="{{ role_path }}/files/.tmux.conf" dest=~/.tmux.conf
+

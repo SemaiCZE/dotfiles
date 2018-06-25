@@ -1,0 +1,11 @@
+- name: Check if original .gitconfig is present
+  stat: path=~/.gitconfig
+  register: file
+
+- name: Backup original .gitconfig
+  copy: src=~/.gitconfig dest=.gitconfig_backup
+  when: file.stat.exists
+
+- name: Copy new .gitconfig
+  copy: src="{{ role_path }}/files/.gitconfig" dest=~/.gitconfig
+

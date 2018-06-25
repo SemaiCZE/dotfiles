@@ -1,0 +1,22 @@
+- name: Check if original .profile is present
+  stat: path=~/.profile
+  register: file1
+
+- name: Backup original .profile
+  copy: src=~/.profile dest=.profile_backup
+  when: file1.stat.exists
+
+- name: Copy new .profile
+  copy: src="{{ role_path }}/files/.profile" dest=~/.profile
+
+- name: Check if original .bashrc is present
+  stat: path=~/.bashrc
+  register: file2
+
+- name: Backup original .bashrc
+  copy: src=~/.bashrc dest=.bashrc_backup
+  when: file2.stat.exists
+
+- name: Copy new .bashrc
+  copy: src="{{ role_path }}/files/.bashrc" dest=~/.bashrc
+
