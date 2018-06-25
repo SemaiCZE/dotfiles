@@ -70,8 +70,8 @@ bindkey '\e[1;5D' backward-word
 bindkey '\e\e[C'  forward-word
 bindkey '\e\e[D'  backward-word
 
-alias vi='vimx'
-alias vim='vimx'
+alias vi='vim'
+alias vim='vim'
 alias la='ls -al'
 alias ls='ls --color=auto'
 alias ssr='ssh -l root'
@@ -151,5 +151,5 @@ bindkey '^ ' autosuggest-execute
 #zle -N zle-line-init
 #
 #
-#source ~/Documents/source/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zshrc.local
 

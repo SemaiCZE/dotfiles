@@ -17,6 +17,9 @@
   command: cp -r ~/.vim ~/.vim_backup
   when: directory.stat.isdir is defined and directory.stat.isdir
 
+- name: Delete original .vim/
+  file: path=~/.vim state=absent
+
 - name: Copy new .vim/
   copy: src="{{ role_path }}/files/.vim" dest=~ directory_mode=yes
 

@@ -9,6 +9,9 @@
 - name: Copy new .zshrc
   copy: src="{{ role_path }}/files/.zshrc" dest=~/.zshrc
 
+- name: Make sure that .zshrc.local is present
+  file: path=~/.zshrc.local state=touch
+
 - name: Check if original .zsh/ is present
   stat: path=~/.zsh
   register: directory
