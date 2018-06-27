@@ -1,6 +1,6 @@
 # The following lines were added by compinstall
 
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' completer _complete _expand _ignored _approximate
 zstyle ':completion:*:approximate:*' max-errors 1 # limit to 1 error
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -9,8 +9,11 @@ zstyle ':completion:*' menu select=2
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle :compinstall filename '~/.zshrc'
 
-autoload -Uz compinit
+#autoload -Uz compinit
+autoload -U +X compinit
+autoload -U +X bashcompinit
 compinit
+bashcompinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -28,6 +31,12 @@ setopt auto_cd
 setopt mark_dirs
 
 unsetopt menu_complete # do not autoselect the first completion entry
+
+setopt extended_history
+setopt hist_ignore_space
+setopt hist_verify
+setopt interactivecomments
+#setopt share_history
 
 # ===== Correction
 setopt correct # spelling correction for commands
@@ -54,21 +63,59 @@ PROMPT="%(!.%F{red}.%F{green})%n%F{red}@%F{cyan}%m%f:%F{yellow}%(4~.<</%2~.%~)%F
 #PROMPT="%(!.%F{red}.%F{green})%n%F{red}@%F{cyan}%m%f:%F{yellow}%40<\<\<<%~%F{green}%(?..%F{red})%#%f "
 RPROMPT='%F{cyan}${vcs_info_msg_0_}%f %* %F{green}%(?..%F{red})%?%f'
 
+case "${TERM}" in
+  cons25*|linux) # plain BSD/Linux console
+    bindkey '\e[H'    beginning-of-line   # home
+    bindkey '\e[F'    end-of-line         # end
+    bindkey '\e[5~'   delete-char         # delete
+    bindkey '[D'      emacs-backward-word # esc left
+    bindkey '[C'      emacs-forward-word  # esc right
+    ;;
+  *rxvt*) # rxvt derivatives
+    bindkey '\e[3~'   delete-char         # delete
+    bindkey '\eOc'    forward-word        # ctrl right
+    bindkey '\eOd'    backward-word       # ctrl left
+    # workaround for screen + urxvt
+    bindkey '\e[7~'   beginning-of-line   # home
+    bindkey '\e[8~'   end-of-line         # end
+    bindkey '^[[1~'   beginning-of-line   # home
+    bindkey '^[[4~'   end-of-line         # end
+    ;;
+  *xterm*) # xterm derivatives
+    bindkey '\e[H'    beginning-of-line   # home
+    bindkey '\e[F'    end-of-line         # end
+    bindkey '\e[3~'   delete-char         # delete
+    bindkey '\e[1;5C' forward-word        # ctrl right
+    bindkey '\e[1;5D' backward-word       # ctrl left
+    # workaround for screen + xterm
+    bindkey '\e[1~'   beginning-of-line   # home
+    bindkey '\e[4~'   end-of-line         # end
+    ;;
+  screen)
+    bindkey '^[[1~'   beginning-of-line   # home
+    bindkey '^[[4~'   end-of-line         # end
+    bindkey '\e[3~'   delete-char         # delete
+    bindkey '\eOc'    forward-word        # ctrl right
+    bindkey '\eOd'    backward-word       # ctrl left
+    bindkey '^[[1;5C' forward-word        # ctrl right
+    bindkey '^[[1;5D' backward-word       # ctrl left
+    ;;
+esac
 
-bindkey '\e[1~'   beginning-of-line  # Linux console
-bindkey '\e[H'    beginning-of-line  # xterm
-bindkey '\eOH'    beginning-of-line  # gnome-terminal
-bindkey '\e[2~'   overwrite-mode     # Linux console, xterm, gnome-terminal
-bindkey '\e[3~'   delete-char        # Linux console, xterm, gnome-terminal
-bindkey '\e[4~'   end-of-line        # Linux console
-bindkey '\e[F'    end-of-line        # xterm
-bindkey '\eOF'    end-of-line        # gnome-terminal
-bindkey '\e[5C'   forward-word
-bindkey '\e[5D'   backward-word
-bindkey '\e[1;5C' forward-word
-bindkey '\e[1;5D' backward-word
-bindkey '\e\e[C'  forward-word
-bindkey '\e\e[D'  backward-word
+#bindkey '\e[1~'   beginning-of-line  # Linux console
+#bindkey '\e[H'    beginning-of-line  # xterm
+#bindkey '\eOH'    beginning-of-line  # gnome-terminal
+#bindkey '\e[2~'   overwrite-mode     # Linux console, xterm, gnome-terminal
+#bindkey '\e[3~'   delete-char        # Linux console, xterm, gnome-terminal
+#bindkey '\e[4~'   end-of-line        # Linux console
+#bindkey '\e[F'    end-of-line        # xterm
+#bindkey '\eOF'    end-of-line        # gnome-terminal
+#bindkey '\e[5C'   forward-word
+#bindkey '\e[5D'   backward-word
+#bindkey '\e[1;5C' forward-word
+#bindkey '\e[1;5D' backward-word
+#bindkey '\e\e[C'  forward-word
+#bindkey '\e\e[D'  backward-word
 
 alias vi='vim'
 alias vim='vim'
@@ -81,6 +128,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 #alias mc='mc --nosubshell'
+alias srcgrep='grep -inIEr --color=ALWAYS'
 
 # -- coloured manuals
 man() {
@@ -124,7 +172,6 @@ export PATH=$PATH:/home/petr/bin
 export SAL_USE_VCLPLUGIN=gtk
 export RES_OPTIONS=edns0
 #export SUDO_PROMPT=$'\e[31mSUDO\e[m password for \e[34m%p\e[m: '
-export SEZNAM_GITLAB_TOKEN=nHXi33Crjw3s_SsC2zRQ
 
 setopt autopushd
 
