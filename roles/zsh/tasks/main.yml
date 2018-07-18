@@ -24,5 +24,5 @@
   file: path=~/.zsh state=absent
 
 - name: Copy new .zsh/
-  copy: src="{{ role_path }}/files/.zsh" dest=~ directory_mode=yes
+  copy: src="{{ role_path }}/files/.zsh" dest=~ directory_mode='0775' mode='0664'
 
